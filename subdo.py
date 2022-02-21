@@ -40,8 +40,9 @@ def subdoscan(dom: str):
 if arg.domain:
     subdoscan(arg.domain)
 elif arg.list:
-    
     target = getUrl(arg.list)
     for lis in target:
         print(w+'\n=======================================')
         subdoscan(lis)
+else:
+    print(red+'Usage: subdo.py [-h] [-d DOMAIN] [-ld List Domain]')
