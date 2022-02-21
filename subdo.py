@@ -17,12 +17,7 @@ def getUrl(url):
             urls.append(allurl[i].strip('\n'))
         return urls
     
-parser = argparse.ArgumentParser()
 
-parser.add_argument('-d', '--domain', metavar='DOMAIN', help='Target domain')
-parser.add_argument('-ld', '--list', metavar='List Domain', help='List target')
-
-arg = parser.parse_args()
 def subdoscan(dom: str):
     target = dom.replace('http://','').replace('https://','').split('/')[0]
     res = requests.get(url + target).text
@@ -33,10 +28,12 @@ def subdoscan(dom: str):
         garis = result.splitlines()
         print(c+result)
         print(f'\n{b}Total subdomain: {str(len(garis))}')
-        
 
 
-
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', '--domain', metavar='DOMAIN', help='Target domain')
+parser.add_argument('-ld', '--list', metavar='List Domain', help='List target')
+arg = parser.parse_args()
 if arg.domain:
     subdoscan(arg.domain)
 elif arg.list:
